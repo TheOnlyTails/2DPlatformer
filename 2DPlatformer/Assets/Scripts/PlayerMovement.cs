@@ -8,36 +8,36 @@ public class PlayerMovement : MonoBehaviour
     public GameObject spawnPoint;
     // public BoxCollider2D body;
 
-    private float m_HorizontalMove;
+    private float _horizontalMove;
     public float runSpeed;
-    private bool m_Jump;
-    private bool m_Crouch;
+    private bool _jump;
+    private bool _crouch;
 
-    private static readonly int Speed = Animator.StringToHash("speed");
-    private static readonly int IsJumping = Animator.StringToHash("isJumping");
-    private static readonly int IsCrouching = Animator.StringToHash("isCrouching");
+    private static readonly int Speed = Animator.StringToHash("Speed");
+    private static readonly int IsJumping = Animator.StringToHash("IsJumping");
+    private static readonly int IsCrouching = Animator.StringToHash("IsCrouching");
 
     // Update is called once per frame
     private void Update()
     {
-        m_HorizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+        _horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
-        animator.SetFloat(Speed, Mathf.Abs(m_HorizontalMove));
+        animator.SetFloat(Speed, Mathf.Abs(_horizontalMove));
 
         if (Input.GetButtonDown("Jump"))
         {
-            m_Jump = true;
+            _jump = true;
 
             animator.SetBool(IsJumping, true);
         }
 
         if (Input.GetButtonDown("Crouch"))
         {
-            m_Crouch = true;
+            _crouch = true;
         }
         else if (Input.GetButtonUp("Crouch"))
         {
-            m_Crouch = false;
+            _crouch = false;
         }
 
         if (gameObject.transform.position.y < -50)
@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnLanding()
     {
-        m_Jump = false;
+        _jump = false;
         animator.SetBool(IsJumping, false);
     }
 
@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        controller.Move(m_HorizontalMove * Time.fixedDeltaTime, m_Crouch, m_Jump);
-        m_Jump = false;
+        controller.Move(_horizontalMove * Time.fixedDeltaTime, _crouch, _jump);
+        _jump = false;
     }
 }
