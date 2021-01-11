@@ -1,13 +1,13 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GemHandler : MonoBehaviour
 {
     public List<Transform> gemPositions;
     public Transform initialGemTransform;
     public int gems;
-    public Text gemCounter;
+    public TextMeshProUGUI gemCounter;
     public GameObject destructionEffect;
     public GameObject gemPrefab;
 
