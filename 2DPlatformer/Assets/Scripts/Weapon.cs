@@ -7,6 +7,8 @@ public class Weapon : MonoBehaviour
 
     private void Update()
     {
+        if (PauseMenu.IsPaused) return;
+
         if (Input.GetButtonDown("Fire1"))
         {
             Shoot();
