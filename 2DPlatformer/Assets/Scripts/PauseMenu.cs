@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class  PauseMenu : MonoBehaviour
+public class PauseMenu : MonoBehaviour
 {
     public static bool IsPaused;
     public GameObject pauseMenuUI;
@@ -11,13 +11,9 @@ public class  PauseMenu : MonoBehaviour
         if (!Input.GetKeyDown(KeyCode.Escape)) return;
 
         if (IsPaused)
-        {
             Resume();
-        }
         else
-        {
             Pause();
-        }
     }
 
     public void Resume()
@@ -37,6 +33,7 @@ public class  PauseMenu : MonoBehaviour
     public void LoadMenu()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        Time.timeScale = 1f;
     }
 
     public void QuitGame()
