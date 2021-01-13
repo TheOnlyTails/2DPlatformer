@@ -55,8 +55,9 @@
 *.apk
 *.unitypackage
 
-# Crashlytics generated file
+# Crashlytics generated file and logs
 2DPlatformer/crashlytics-build.properties
+*.log
 
 # Rider config folder
 2DPlatformer/.idea/
